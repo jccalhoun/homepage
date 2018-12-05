@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title id="tab_title">Pomodoro</title>
+    <link id="dynamic-favicon" rel="icon" type="image/ico" href="images/red_tomato.ico">
+    <!-- Original favicon courtesy of http://icons8.com -->
+
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Indie+Flower'>
+    <link rel="stylesheet" href="pomodoro.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="content">
+            
+                <div><span id="timer"></span></div>
+                <button id="btn_start" class="btn_default">start</button>
+                <button id="btn_pause" class="btn_default">pause</button>
+                <button id="btn_reset" class="btn_default">reset</button>
+
+                <button id="btn_custom" class="btn_default">
+          <label for="ipt_custom">custom:</label>
+        </button>
+                <input type="number" id="ipt_custom" value="10" min="0" max="100000000">
+                <select id="custom_units">
+          <option value="seconds" selected>seconds</option>
+          <option value="minutes">minutes</option>
+          <option value="hours">hours</option>
+        </select>
+            
+        </div>
+        <div class="footerbox">
+
+            <div id="options">
+                <label for="alarm_select" id="lbl_alarm">Alarm:</label>
+                <select id="alarm_select">
+          <option value="none">None</option>
+          <option value="alarm_chime">Chime</option>
+          <option value="alarm_bell" selected>Bell</option>
+          <option value="alarm_beeps">Beeps</option>
+          <option value="alarm_boops">Boops</option>
+        </select>
+                <label for="alarm_volume" id="lbl_volume">Volume:</label>
+                <input type="range" id="alarm_volume" min=0 max=100 value=50>
+            </div>
+
+        </div>
+        <div class="credits">
+            based on pomodoro timer by
+            <a href="https://roche.io/">Andy Roche</a> -
+            <a href="https://github.com/rocheio/pomodoro">Github</a>
+        </div>
+
+
+        <audio id="alarm_chime" loop>
+  <source src="audio/one_chime.mp3" type="audio/mpeg"></audio>
+        <audio id="alarm_bell" loop>
+  <source src="audio/one_bell.mp3" type="audio/mpeg"></audio>
+        <audio id="alarm_beeps" loop>
+  <source src="audio/three_beeps.mp3" type="audio/mpeg"></audio>
+        <audio id="alarm_boops" loop>
+  <source src="audio/three_boops.mp3" type="audio/mpeg"></audio>
+        <!-- Audio courtesy of https://soundcloud.com/andyouarewho -->
+        <script type="text/javascript" src="mousetrap/mousetrap.js"></script>
+        <script type="text/javascript" src="pomodoro.js"></script>
+</body>
+</html>
