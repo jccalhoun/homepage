@@ -2,39 +2,42 @@
 <html>
 
 <head>
+    <!--I think I have the grid messed up with the links section. grids in grid? -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>jccalhoun homepage</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/stylegrid.css">
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <div class="row">
-        <div class="col-xs-4">
+    <div class="grid-container">
+        <div class="grid-item">
             <div id="timeArea">
                 <p class="time"><span class="timeInner"></span> <span class="date"></span></p>
             </div>
         </div>
-        <div class="col-auto" id="forecast">
+        <div class="grid-item" id="forecast">
 
             <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="https://forecast.io/embed/#lat=39.366535&lon=-87.386842&name=TerreHaute"> </iframe>
 
         </div>
-        <div class="col-xs-4">
+        <div class="grid-item">
             <div style="width: 280px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=52528" width="280" height="228" frameborder="0" scrolling="no"></iframe><a style="height: 20px;display: block;text-indent: -9999em;margin: -20px 0 0 0;position: relative;z-index: 1" href="http://www.willyweather.com/in/vigo-county/terre-haute.html">http://www.willyweather.com/in/vigo-county/terre-haute.html</a></div>
 
         </div>
-    </div>
-    <div class="row">
-        <div class="col-auto">
+    
+        <div class="grid-item">
             <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=jccalhoun%40gmail.com&amp;color=%2329527A&amp;ctz=America%2FNew_York" style="border-width:0" width="600" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
-        <div class="col-auto">
+        <div class="grid-item">
             <!--<form method="get" action="http://www.bing.com/search" target="_blank" id="searchBox">
         <input class="flexy-nav__search" type="text" placeholder="Type search terms and hit enter..." name="q" size="31"
 maxlength="255" value="" />
@@ -59,8 +62,8 @@ maxlength="255" value="" />
             </form>
 
 
-            <div class="row">
-                <div class="col-auto">
+            
+                <div class="grid-item">
                     <section id="linkArea" class="clearfix">
                         <ul class="links">
                             <li><a href="http://io9.com/" target="_blank">io9</a></li>
@@ -85,7 +88,7 @@ maxlength="255" value="" />
                         </ul>
                     </section>
                 </div>
-                <div class="col-auto">
+                <div class="grid-item">
                     
 
                         <ul class="links">
@@ -108,9 +111,9 @@ maxlength="255" value="" />
                    
                 </div>
 
-            </div>
+            
             <div id="tabs">
-            <div class="col-auto">
+            <div class="grid-item">
                 
                 <input type="checkbox" name="tabs" id="toggle-tab1" /><label for="toggle-tab1">Comic Books</label> 
                 <input type="checkbox" name="tabs" id="toggle-tab2" /><label for="toggle-tab2">Downloads</label> 
@@ -163,7 +166,7 @@ maxlength="255" value="" />
             </div>
             </div>
         </div>
-        <div class="col-auto">
+        <div class="grid-item">
             <div class="feedgrabbr_widget" id="fgid_917371715569a0e9b2678c801"></div>
 <script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_917371715569a0e9b2678c801");</script>
 <script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
@@ -238,7 +241,7 @@ maxlength="255" value="" />
             setDate($);
         }, 1000);
     }
-
+setDate($);
     $(function() {
         $('#searchForm input, #searchForm select').keydown(function(e) {
             if (e.keyCode == 13) {
