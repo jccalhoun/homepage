@@ -77,3 +77,19 @@ body {
 
 ul { margin-top: 0; 
 list-style-type:none;}
+
+#timeArea {
+  
+	color: #fff;
+	font: 400 16px 'Open Sans', Arial;
+ }
+  #timeArea .time {
+    font-size: 75px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0 0 20px 20px;
+    text-shadow: 1px 1px 1px black; }
+    #timeArea .time .date {
+      display: block;
+      margin-top: -10px;
+      font-size: 30px; }
