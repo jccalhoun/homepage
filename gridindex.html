@@ -12,11 +12,11 @@
 
 </head>
 
-<body>
+<body onload="getDate()">
 
     <div class="wrapper">
         <div class="box a"><div id="timeArea">
-                <p class="time"><span class="timeInner"></span> <span class="date"></span></p>
+                <p class="time"><span class="timeInner"></span> <span id="date"></span></p>
             </div></div>
         <div class="box b"><iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="https://forecast.io/embed/#lat=39.366535&lon=-87.386842&name=TerreHaute"> </iframe></div>
         <div class="box b2"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=52528" width="280" height="228" frameborder="0" scrolling="no"></iframe></div>
@@ -128,10 +128,10 @@
 </html>
 <script>
 function setDate($) {
-        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        /*var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];*/
         d = new Date();
-        currentDate = days[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()];
+        /*currentDate = days[d.getDay()] + ' ' + d.getDate() + ' ' + months[d.getMonth()];*/
         mins = (d.getMinutes() > 9) ? d.getMinutes() : '0' + d.getMinutes();
         var hours = d.getHours();
         if (hours > 12) {
@@ -143,15 +143,26 @@ function setDate($) {
         previousTime = $('#timeArea .time .timeInner').html();
         if (currentTime != previousTime) {
             $('#timeArea .time .timeInner').html(currentTime);
-            $('#timeArea .time .date').html(currentDate);
+            /*$('#timeArea .time .date').html(currentDate);*/
         }
 
         setTimeout(function() {
             setDate($);
         }, 1000);
+    
+  
+    
     }
     
 setDate($);
         
-
+function getDate() {
+var today = new Date(),
+    options = {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    },
+    month = today.toLocaleString("en-US", options);
+  document.getElementById("date").innerHTML = month;
+     
+}
 </script>
