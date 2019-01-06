@@ -102,7 +102,8 @@ body,
 
 }
 
-.d a:link a:visited {
+.d a:link,
+.d a:visited {
     color: #fff;
     font: 400 16px 'Open Sans', Arial;
     text-shadow: 1px 1px 1px black;
