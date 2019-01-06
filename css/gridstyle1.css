@@ -1,48 +1,50 @@
-body {
-    margin: 40px;
-    background: url("https://source.unsplash.com/random/1920x1080");
+body,
+.box:before {
+
+    background: url("https://source.unsplash.com/random/1920x1080")0 / cover fixed;
 }
 
 .wrapper {
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 20px;
     grid-template-columns: repeat(6, [col] 1fr);
     grid-template-rows: repeat(2, [row] auto);
-    //background-color: #fff;
-    //color: #444;
+
 }
 
 .box {
-    background: inherit;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, .25);
+    overflow: hidden;
     border-radius: 5px;
     padding: 20px;
     font-size: 120%;
-
+    position: relative;
 }
 
 .box:before {
-    content: "";
+    content: '';
+    margin: -35px;
     position: absolute;
 
-    bottom: 0;
+    top: 0;
     right: 0;
-    background: inherit;
-    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.2);
-    filter: blur(10px);
+    bottom: 0;
+    left: 0;
+    filter: blur(15px);
+    z-index: -1;
 }
 
-.box .box {
-    background: inherit;
-}
 
 .a {
     grid-column: col / span 1;
     grid-row: row;
+    background: hsla(0, 0, 90%, .25);
 }
 
 .b {
     grid-column: col 2/ span 4;
     grid-row: row;
+    //background: hsla(0, 0%, 90%, .4);
 }
 
 .c {
@@ -67,11 +69,15 @@ body {
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 22em auto;
+    color: #fff;
+    font: 400 16px 'Open Sans', Arial;
+    text-shadow: 1px 1px 1px black;
 }
 
 .e {
     grid-column: 1 / 3;
     grid-row: 2;
+    background: hsla(0, 0%, 90%, .4);
 }
 
 .f {
@@ -79,17 +85,27 @@ body {
     grid-row: 1;
 
     grid-template-rows: 1fr 1fr;
+
 }
 
 .searchBox {
     grid-column: 1/2;
     grid-row: 1fr;
+    background: hsla(0, 0%, 90%, .4);
 }
 
 .visibleLinks {
     grid-column: 1/2;
     grid-row: 1fr;
     columns: 2;
+    background: hsla(0, 0%, 90%, .4);
+
+}
+
+.d a:link {
+    color: #fff;
+    font: 400 16px 'Open Sans', Arial;
+    text-shadow: 1px 1px 1px black;
 }
 
 .g {
@@ -102,10 +118,12 @@ ul {
     list-style-type: none;
 }
 
-#timeArea {
-
+#timeArea,
+#forecast_embed {
+    background: hsla(0, 0%, 90%, .4);
     color: #fff;
     font: 400 16px 'Open Sans', Arial;
+    border-radius: 5px;
 }
 
 #timeArea .time {
@@ -128,6 +146,7 @@ ul {
     margin-top: 2%;
     margin-bottom: 2%;
     border-radius: 3px;
+
 }
 
 input[type="checkbox"] {
