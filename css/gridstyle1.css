@@ -70,7 +70,8 @@ body,
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 22em auto;
     color: #fff;
-    font: 400 16px 'Open Sans', Arial;
+    font-family: 16px 'Volkhov', serif;
+    //font: 400 16px 'Open Sans', Arial;
     text-shadow: 1px 1px 1px black;
 }
 
@@ -105,8 +106,9 @@ body,
 .d a:link,
 .d a:visited {
     color: #fff;
-    font: 400 16px 'Open Sans', Arial;
+    font-family: 16px 'Volkhov', serif;
     text-shadow: 1px 1px 1px black;
+    text-decoration: none;
 }
 
 .g {
@@ -123,7 +125,8 @@ ul {
 #forecast_embed {
     background: hsla(0, 0%, 90%, .4);
     color: #fff;
-    font: 400 16px 'Open Sans', Arial;
+    font-family: 16px 'Volkhov', serif;
+    //font: 400 16px 'Open Sans', Arial;
     border-radius: 5px;
 }
 
@@ -160,7 +163,8 @@ label {
     margin-right: 2px;
     // border-radius:3px;
     //	padding:14px 20px;
-    font-family: Arial;
+    font-family: 'Volkhov', serif;
+    //font-family: Arial;
     font-size: 95%;
     font-weight: 700;
     //color:#777;
