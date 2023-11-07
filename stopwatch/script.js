@@ -8,10 +8,12 @@ window.onload = function () {
     var buttonReset = document.getElementById("button-reset");
     var Interval;
     var timeLimit;
-
+let yellowBackground;
+let redBackground;
     buttonStart.onclick = function () {
         //changed this so it counts seconds not tenths of a second
         timeLimit = parseInt(document.getElementById("mySelect").value);
+		//I think I want to take timeLimit and round it to % to set to yellowBackground and another % to redBackground instead of setting it by hand for each time limit
         clearInterval(Interval);
         Interval = setInterval(startTimer, 1000);
         document.body.style.backgroundColor = "green"; //this sets the background to green when the start button is clicked
