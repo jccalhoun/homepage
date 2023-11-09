@@ -6,10 +6,11 @@ window.onload = function () {
     var buttonStart = document.getElementById("button-start");
     var buttonStop = document.getElementById("button-stop");
     var buttonReset = document.getElementById("button-reset");
-    var Interval;
+    var Interval; 
     var timeLimit;
 let yellowBackground;
 let redBackground;
+    let totalSeconds = 00;
     buttonStart.onclick = function () {
         //changed this so it counts seconds not tenths of a second
         timeLimit = parseInt(document.getElementById("mySelect").value);
@@ -27,21 +28,25 @@ let redBackground;
     //so this calls startTimer and every time startTimer is called it adds one to tens so I think i could do something like set a goal variable and when buttonStart sets the background to Green and time > 70% of goal or something it turns the background yellow
     buttonStop.onclick = function () {
         clearInterval(Interval);
-        document.body.style.backgroundColor = "white"; //this sets the background to white when start button is clicked
+        document.body.style.backgroundColor = "black"; //this sets the background to black when stop button is clicked
     };
 
     buttonReset.onclick = function () {
         clearInterval(Interval);
-        seconds = "00";
+        seconds = "00"; //this works because the ++ spec says it will turn it into a number. And it has to be a string because if it is a number it will only display as 0 and not 00 
+        totalSeconds = 00; 
         minutes = "00";
         appendSeconds.innerHTML = seconds;
         appendMinutes.innerHTML = minutes;
         document.body.style.backgroundColor = "#ffa600"; //sets the background back to the default orangish
+       
     };
 
     function startTimer() {
+        
         seconds++;
-        if (seconds > yellowBackground) {
+        totalSeconds++;
+        if (totalSeconds > yellowBackground) {
             document.body.style.backgroundColor = "yellow";
         }
         if (seconds <= 9) {
