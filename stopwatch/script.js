@@ -34,6 +34,7 @@
     function stopButtonClick() {
         clearInterval(Interval);
         document.body.style.backgroundColor = "black"; //this sets the background to black when stop button is clicked
+        stopStartToggle = true;
     };
     buttonStop.onclick = stopButtonClick;
 
@@ -61,6 +62,7 @@
         } else {
             stopButtonClick();
             console.log('stop was clicked');
+            console.log(stopStartToggle);
             //if I want this to work then I think I need to refactor the buttonStart, buttonStop, and buttonReset to call named functions so that this can then call the functions directly and not startTimer because that doesn't have all the stuff to work correctly. https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onclick_dom 
         }
     });
