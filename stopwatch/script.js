@@ -20,6 +20,7 @@
         clearInterval(Interval);
         Interval = setInterval(startTimer, 1000);
         document.body.style.backgroundColor = "green"; //this sets the background to green when the start button is clicked
+        redBackground = timeLimit * 60;
         if (timeLimit > 1) {
             yellowBackground = (timeLimit - 1) * 60;
         } else {
@@ -71,9 +72,11 @@
 
         seconds++;
         totalSeconds++;
-        if (totalSeconds > yellowBackground) {
+        if (totalSeconds > yellowBackground && totalSeconds < redBackground) {
             document.body.style.backgroundColor = "yellow";
-        }
+        } else if (totalSeconds >= redBackground) {
+            document.body.style.backgroundColor = "red";
+        };
         if (seconds <= 9) {
             appendSeconds.innerHTML = "0" + seconds;
         }
