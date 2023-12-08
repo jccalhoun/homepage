@@ -10,7 +10,21 @@
 </head>
 <!--  I tried to move the buttons to the top but that messes with the padding so that it picks up clicks inside the buttons as being anywhere so I need to fix that.  -->
 <body>
+<button id="fullscreenButton">Toggle Fullscreen</button>
 
+  <script>
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    const button = document.getElementById("fullscreenButton");
+    button.addEventListener("click", toggleFullScreen);
+  </script>
+    <!--  based off of google bard answer need to put the script into the js file though -->
     <form>
         <div id=selectLable>time limit:</div>
         <select id="mySelect">
