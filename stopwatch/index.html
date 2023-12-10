@@ -28,9 +28,29 @@
         <div id="toggleArea">
             <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
         </div>
-
+<div id="options">
+        <label for="alarm_select" id="lbl_alarm">Alarm:</label><br>
+        <select id="alarm_select">
+          <option value="none">None</option>
+          <option value="alarm_chime">Chime</option>
+          <option value="alarm_bell" selected>Bell</option>
+          <option value="alarm_beeps">Beeps</option>
+          <option value="alarm_boops">Boops</option>
+        </select>
+        <br><br>
+        <label for="alarm_volume" id="lbl_volume">Volume:</label><br>
+        <input type="range" id="alarm_volume" min=0 max=100 value=50>
+        </div>
     </div>
-
+<audio id="alarm_chime">
+  <source src="audio/one_chime.mp3" type="audio/mpeg"></audio>
+<audio id="alarm_bell">
+  <source src="audio/one_bell.mp3" type="audio/mpeg"></audio>
+<audio id="alarm_beeps">
+  <source src="audio/three_beeps.mp3" type="audio/mpeg"></audio>
+<audio id="alarm_boops">
+  <source src="audio/three_boops.mp3" type="audio/mpeg"></audio>
+<!-- Audio courtesy of https://soundcloud.com/andyouarewho -->
     <script src="./script.js" defer></script>
     <!-- defer lets you get rid of window.onload in the js file. -->
 </body>

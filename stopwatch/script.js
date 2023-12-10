@@ -90,6 +90,7 @@
 
         } else if (totalSeconds >= redBackground) {
             document.body.style.backgroundColor = "red";
+            playAlarm();
         };
         if (seconds <= 9) {
             appendSeconds.innerHTML = "0" + seconds;
@@ -111,3 +112,12 @@
             appendMinutes.innerHTML = minutes;
         }
     }
+function playAlarm() {
+    var alarmValue = document.getElementById('alarm_select').value;
+    if (alarmValue != 'none') {
+        var alarmAudio = document.getElementById(alarmValue);
+        var alarmVolume = document.getElementById('alarm_volume').value;
+        alarmAudio.volume = alarmVolume / 100;
+        alarmAudio.play();
+    }
+}
