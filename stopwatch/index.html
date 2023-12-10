@@ -6,32 +6,29 @@
     <title>Stopwatch</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="stylesheet.css" type="text/css" charset="utf-8" />
-   <!--  based off of https://codepen.io/cathydutton/pen/xxpOOw -->
+    <!--  based off of https://codepen.io/cathydutton/pen/xxpOOw -->
 </head>
-<!--  I tried to move the buttons to the top but that messes with the padding so that it picks up clicks inside the buttons as being anywhere so I need to fix that.  -->
+
 <body>
-
-
-  
     <form>
         <div id=selectLable>time limit:</div>
         <select id="mySelect">
             <option value=1>1</option>
             <option value=3>3</option>
+            <option value=3>4</option>
             <option value=6>6</option>
             <option value=8>8</option>
-        </select></form>
+        </select>
+    </form>
     <button id="button-start">Start</button>
-        <button id="button-stop">Stop</button>
-        <button id="button-reset">Reset</button>
+    <button id="button-stop">Stop</button>
+    <button id="button-reset">Reset</button>
     <button id="fullscreenButton">Fullscreen</button>
     <div class="wrapper">
         <div id="toggleArea">
-            <!-- <h1>Stopwatch</h1>-->
-
             <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
         </div>
-        
+
     </div>
 
     <script src="./script.js" defer></script>

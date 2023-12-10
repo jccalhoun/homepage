@@ -12,12 +12,13 @@
     let totalSeconds = 00;
     let stopStartToggle = true;
     const containingElement = document.getElementById("toggleArea");
-function toggleFullScreen() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-      } else {
-        document.exitFullscreen();
-      }
+
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
     }
 
     const button = document.getElementById("fullscreenButton");
@@ -26,11 +27,11 @@ function toggleFullScreen() {
     function startButtonClick() {
         //changed this so it counts seconds not tenths of a second
         timeLimit = parseInt(document.getElementById("mySelect").value);
-        //I think I want to take timeLimit and round it to % to set to yellowBackground and another % to redBackground instead of setting it by hand for each time limit
+
         clearInterval(Interval);
         Interval = setInterval(startTimer, 1000);
         document.body.style.backgroundColor = "green"; //this sets the background to green when the start button is clicked
-        
+
         redBackground = timeLimit * 60;
         if (timeLimit > 1) {
             yellowBackground = (timeLimit - 1) * 60;
@@ -41,8 +42,9 @@ function toggleFullScreen() {
         stopStartToggle = false;
     };
 
-    //so this calls startTimer and every time startTimer is called it adds one to tens so I think i could do something like set a goal variable and when buttonStart sets the background to Green and time > 70% of goal or something it turns the background yellow
-    buttonStart.onclick = startButtonClick; //refactoring this to call a function so that I can start it by clicking anywhere not just the button
+
+    buttonStart.onclick = startButtonClick;
+
     function stopButtonClick() {
         clearInterval(Interval);
         document.body.style.backgroundColor = "black"; //this sets the background to black when stop button is clicked
@@ -61,7 +63,7 @@ function toggleFullScreen() {
         stopStartToggle = true;
     };
     buttonReset.onclick = resetTimer;
-    // containingElement = document.querySelector('#toggleArea');
+
 
 
     containingElement.addEventListener('click', function () {
@@ -70,12 +72,12 @@ function toggleFullScreen() {
 
             startButtonClick();
             console.log(stopStartToggle);
-            //A better approach would be to set this in the function? same with stopButtonClick and reset
+
         } else {
             stopButtonClick();
             console.log('stop was clicked');
             console.log(stopStartToggle);
-            //if I want this to work then I think I need to refactor the buttonStart, buttonStop, and buttonReset to call named functions so that this can then call the functions directly and not startTimer because that doesn't have all the stuff to work correctly. https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onclick_dom 
+
         }
     });
 
@@ -85,7 +87,7 @@ function toggleFullScreen() {
         totalSeconds++;
         if (totalSeconds > yellowBackground && totalSeconds < redBackground) {
             document.body.style.backgroundColor = "yellow";
-            
+
         } else if (totalSeconds >= redBackground) {
             document.body.style.backgroundColor = "red";
         };
