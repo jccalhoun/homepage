@@ -1,54 +1,97 @@
-window.onload = function () {
-    var minutes = 00;
-    var seconds = 00;
-    var appendSeconds = document.getElementById("seconds");
-    var appendMinutes = document.getElementById("minutes");
-    var buttonStart = document.getElementById("button-start");
-    var buttonStop = document.getElementById("button-stop");
-    var buttonReset = document.getElementById("button-reset");
-    var Interval; 
-    var timeLimit;
-let yellowBackground;
-let redBackground;
+    let minutes = 00;
+    let seconds = 00;
+    let appendSeconds = document.getElementById("seconds");
+    let appendMinutes = document.getElementById("minutes");
+    let buttonStart = document.getElementById("button-start");
+    let buttonStop = document.getElementById("button-stop");
+    let buttonReset = document.getElementById("button-reset");
+    let Interval;
+    let timeLimit;
+    let yellowBackground;
+    let redBackground;
     let totalSeconds = 00;
-    buttonStart.onclick = function () {
+    let stopStartToggle = true;
+    const containingElement = document.getElementById("toggleArea");
+
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    const button = document.getElementById("fullscreenButton");
+    button.addEventListener("click", toggleFullScreen);
+
+    function startButtonClick() {
         //changed this so it counts seconds not tenths of a second
         timeLimit = parseInt(document.getElementById("mySelect").value);
-		//I think I want to take timeLimit and round it to % to set to yellowBackground and another % to redBackground instead of setting it by hand for each time limit
+
         clearInterval(Interval);
         Interval = setInterval(startTimer, 1000);
         document.body.style.backgroundColor = "green"; //this sets the background to green when the start button is clicked
+
+        redBackground = timeLimit * 60;
         if (timeLimit > 1) {
-        yellowBackground = (timeLimit - 1)*60;
+            yellowBackground = (timeLimit - 1) * 60;
         } else {
             yellowBackground = 30;
         } //if timeLimit is more than a minute it sets yellow to a minute less than the limit. if not it sets it to 30 seconds. currently doesn't work because the seconds only counts up to 59 then resets to 0. 
         console.log(yellowBackground);
-    };
-    //so this calls startTimer and every time startTimer is called it adds one to tens so I think i could do something like set a goal variable and when buttonStart sets the background to Green and time > 70% of goal or something it turns the background yellow
-    buttonStop.onclick = function () {
-        clearInterval(Interval);
-        document.body.style.backgroundColor = "black"; //this sets the background to black when stop button is clicked
+        stopStartToggle = false;
     };
 
-    buttonReset.onclick = function () {
+
+    buttonStart.onclick = startButtonClick;
+
+    function stopButtonClick() {
+        clearInterval(Interval);
+        document.body.style.backgroundColor = "black"; //this sets the background to black when stop button is clicked
+        stopStartToggle = true;
+    };
+    buttonStop.onclick = stopButtonClick;
+
+    function resetTimer() {
         clearInterval(Interval);
         seconds = "00"; //this works because the ++ spec says it will turn it into a number. And it has to be a string because if it is a number it will only display as 0 and not 00 
-        totalSeconds = 00; 
+        totalSeconds = 00;
         minutes = "00";
         appendSeconds.innerHTML = seconds;
         appendMinutes.innerHTML = minutes;
         document.body.style.backgroundColor = "#ffa600"; //sets the background back to the default orangish
-       
+        stopStartToggle = true;
     };
+    buttonReset.onclick = resetTimer;
+
+
+
+    containingElement.addEventListener('click', function () {
+        console.log('clicked');
+        if (stopStartToggle == true) {
+
+            startButtonClick();
+            console.log(stopStartToggle);
+
+        } else {
+            stopButtonClick();
+            console.log('stop was clicked');
+            console.log(stopStartToggle);
+
+        }
+    });
 
     function startTimer() {
-        
+
         seconds++;
         totalSeconds++;
-        if (totalSeconds > yellowBackground) {
+        if (totalSeconds > yellowBackground && totalSeconds < redBackground) {
             document.body.style.backgroundColor = "yellow";
-        }
+
+        } else if (totalSeconds >= redBackground) {
+            document.body.style.backgroundColor = "red";
+            playAlarm();
+        };
         if (seconds <= 9) {
             appendSeconds.innerHTML = "0" + seconds;
         }
@@ -69,5 +112,12 @@ let redBackground;
             appendMinutes.innerHTML = minutes;
         }
     }
-};
-//console.log(parseInt(document.getElementById("mySelect").value));
+function playAlarm() {
+    var alarmValue = document.getElementById('alarm_select').value;
+    if (alarmValue != 'none') {
+        var alarmAudio = document.getElementById(alarmValue);
+        var alarmVolume = document.getElementById('alarm_volume').value;
+        alarmAudio.volume = alarmVolume / 100;
+        alarmAudio.play();
+    }
+}
